@@ -1,0 +1,122 @@
+<html>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="https://kit.fontawesome.com/d4755c66d3.js" crossorigin="anonymous"></script>
+
+<head>
+    <title>Code Runner</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+
+        #game-container {
+            position: relative;
+            width: 100%;
+            height: 85%;
+            margin: 50px auto;
+            /* background-color: red; */
+            background: url('/assets/img/bg.jpg') no-repeat center center;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        #player {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 80px;
+            /* background-color: blue; */
+        }
+
+        .obstacle {
+            position: absolute;
+            top: 0;
+            width: 100;
+            height: 100;
+            background: url('/assets/img/bug.svg') no-repeat center;
+
+
+        }
+
+        .bonus-item {
+            width: 30px;
+            /* Tamanho do bônus */
+            height: 30px;
+            background-color: gold;
+            /* Cor do item bônus */
+            position: absolute;
+            top: 0;
+            border-radius: 50%;
+            /* Deixa ele arredondado como uma moeda */
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+            /* Brilho para destacar */
+        }
+
+
+        #stats {
+
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.042) 10%, rgba(0, 0, 0, 0.092) 90%);
+            border-radius: .4rem;
+            padding: 1.2rem;
+            margin-top: .7rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" id="stats">
+        <div class="container-fluid">
+            <button class="btn btn-warning text-white" id="score"><i class="fa-solid fa-medal"></i></i></button>
+            <button class="btn btn-success text-white" id="init"><i class="fa-solid fa-play"></i></button>
+            <button class="btn btn-danger text-white" id="reset"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+
+        </div>
+
+    </div>
+
+    <div id="game-container">
+        <div class="container left bg-white rounded "
+            style=" width:20%; margin-top: 2rem; margin-left: 1rem; margin-right: 5rem; padding: 2rem;">
+            <p></p>
+        </div>
+        <div id="player"><img src="/assets/img/joshua.png" alt=""></div>
+    </div>
+
+    <script type="module">
+        import { initializeGame } from '/assets/js/game.js';
+        import {  playCoinSound } from '/assets/js/game.js';
+        document.getElementById("init").addEventListener("click", function () {
+            event.preventDefault();
+            initializeGame();
+
+           
+        })
+        document.getElementById("reset").addEventListener("click", function () {
+            event.preventDefault();
+            // playCoinSound();
+            location.reload();
+        })
+        
+
+    </script>
+</body>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+
+
+
+</html>
