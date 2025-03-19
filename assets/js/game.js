@@ -95,6 +95,24 @@ function handleKeyDown(event) {
     }
 }
 
+
+
+async function saveScore(username, score) {
+    try {
+        const response = await fetch('https://evoludesign.com.br/api/score', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, score })
+        });
+
+        const data = await response.json();
+        console.log("Pontuação salva:", data);
+    } catch (error) {
+        console.error("Erro ao salvar pontuação:", error);
+    }
+}
+
+
 function jump() {
     isJumping = true;
     let jumpHeight = 100;
@@ -189,6 +207,12 @@ function checkCollision(obstacle) {
 function gameOver() {
     clearInterval(obstacleMoveInterval);
     alert('Game Over! Your score: ' + score);
+
+    const username = prompt("Digite seu nome:");
+    if (username) {
+        saveScore(username, score);
+    }
+
     location.reload(); // Refresh the page to restart
 }
 
